@@ -13,7 +13,7 @@ public class Point {
         this.xyz = xyz;
     }
 
-    public Object add(Vector vector) {
+    public Point add(Vector vector) {
         return new Point(xyz.add(vector.xyz));
     }
 
