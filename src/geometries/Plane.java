@@ -24,6 +24,11 @@ public class Plane implements Geometry {
 
     }
 
+    public Plane(Point point, Vector vector) {
+        q0 = point;
+        normal = vector.normalize();
+    }
+
     @Override
     public Vector getNormal(Point point) {
         return normal;

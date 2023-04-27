@@ -9,10 +9,15 @@ public class Point {
         xyz = new Double3(p1, p2, p3);
     }
 
-    public Point(Double3 xyz) {
+    Point(Double3 xyz) {
         this.xyz = xyz;
     }
 
+    /**
+     * this function add vector to point
+     * @param vector vector for adding
+     * @return returns a point that is the result of the adding
+     */
     public Point add(Vector vector) {
         return new Point(xyz.add(vector.xyz));
     }
@@ -20,15 +25,20 @@ public class Point {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Point point)) return false;
-        return xyz.equals(point.xyz);
+        return (o instanceof Point other)
+                && xyz.equals(other.xyz);
     }
 
     @Override
     public String toString() {
-        return xyz.toString();
+        return "point{" + xyz.toString() + "}";
     }
 
+    /**
+     * this fun
+     * @param p1
+     * @return
+     */
     public Vector subtract(Point p1) {
         return new Vector( xyz.subtract(p1.xyz));
     }
