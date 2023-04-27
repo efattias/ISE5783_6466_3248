@@ -9,7 +9,7 @@ public class Vector extends Point {
 
     }
 
-    public Vector(Double3 xyz) {
+    Vector(Double3 xyz) {
         super(xyz);
         if (xyz.equals(Double3.ZERO))
             throw new IllegalArgumentException("you should not create vector zero");
@@ -32,14 +32,13 @@ public class Vector extends Point {
     }
 
     public Vector crossProduct(Vector v) {
-        Vector vector = new Vector((xyz.d2 * v.xyz.d3) - (xyz.d3 * v.xyz.d2),
-                (xyz.d1 * v.xyz.d3) - (xyz.d3 * v.xyz.d1),
+        return new Vector((xyz.d2 * v.xyz.d3) - (xyz.d3 * v.xyz.d2),
+                -((xyz.d1 * v.xyz.d3) - (xyz.d3 * v.xyz.d1)),
                 (xyz.d1 * v.xyz.d2) - (xyz.d2 * v.xyz.d1));
-        return vector.normalize();
     }
 
     public Vector normalize() {
-        double ls = this.lengthSquared();
+        double ls = this.length();
         return new Vector(xyz.d1 / ls, xyz.d2 / ls, xyz.d3 / ls);
     }
 
@@ -51,4 +50,13 @@ public class Vector extends Point {
         return new Vector(xyz.scale(t));
     }
 
+    @Override
+    public boolean equals(Object o) {
+        return super.equals(o);
+    }
+
+    @Override
+    public String toString() {
+        return "Vector{" + super.toString() + "}";
+    }
 }
