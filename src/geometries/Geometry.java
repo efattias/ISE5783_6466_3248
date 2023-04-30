@@ -2,7 +2,17 @@ package geometries;
 
 import primitives.Point;
 import primitives.Vector;
-public interface Geometry {
-    public Vector getNormal(Point point);
 
+/**
+ * A Geometry interface represents a geometric Shape
+ */
+public interface Geometry {
+
+    /**
+     * this function calculate and return the shape normal.
+     *
+     * @param point A point to calculate normal
+     * @return the shape normal
+     */
+    public Vector getNormal(Point point);
 }
