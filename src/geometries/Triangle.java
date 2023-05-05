@@ -1,6 +1,7 @@
 package geometries;
 
 import primitives.Point;
+import primitives.Vector;
 
 /**
  * Triangle class represents two-dimensional triangle in 3D Cartesian coordinate
@@ -18,4 +19,8 @@ public class Triangle extends Polygon {
         super(point1, point1, point1);
     }
 
+    @Override
+    public Vector getNormal(Point point) {
+        return super.getNormal(point);
+    }
 }
