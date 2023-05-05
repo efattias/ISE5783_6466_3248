@@ -17,7 +17,7 @@ public class Vector extends Point {
     public Vector(double p1, double p2, double p3) {
         super(p1, p2, p3);
         if (xyz.equals(Double3.ZERO))
-            throw new IllegalArgumentException("you should not create vector zero");
+            throw new IllegalArgumentException("You should not create vector zero");
 
     }
 
