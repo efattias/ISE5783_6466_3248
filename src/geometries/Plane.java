@@ -12,7 +12,7 @@ public class Plane implements Geometry {
      */
     Point q0;
     /**
-     * by normal we calculate the plane
+     * By the normal we calculate the plane
      */
     Vector normal;
 
