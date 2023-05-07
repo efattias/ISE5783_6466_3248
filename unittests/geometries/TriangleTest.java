@@ -8,5 +8,11 @@ class TriangleTest {
 
     @Test
     void getNormal() {
+
+        // ============ Equivalence Partitions Tests ==============
+
+
+        // =============== Boundary Values Tests ==================
+
     }
 }

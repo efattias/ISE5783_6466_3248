@@ -27,6 +27,6 @@ public class Tube extends RadialGeometry {
 
     @Override
     public Vector getNormal(Point point) {
-        return null;
+        return axisRay.getDir().normalize();
     }
 }

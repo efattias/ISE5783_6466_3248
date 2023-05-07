@@ -13,7 +13,9 @@ class PlaneTest {
     }
 
     @Test
-    void getNormal() {
+    void testGetNormal() {
+
+        // ============ Equivalence Partitions Tests ==============
         Plane p = new Plane(new Point(1,0,0),new Point(0,1,0),new Point(0,0,1));
         Point p1,p2,p3;
         p1= new Point(1,0,0);
@@ -24,9 +26,10 @@ class PlaneTest {
         v2 = p3.subtract(p2);
         result = v1.crossProduct(v2).normalize();
         assertEquals(result, p.getNormal(),"plane method getNormal is wrong");
+
+        // =============== Boundary Values Tests ==================
+
     }
 
-    @Test
-    void testGetNormal() {
-    }
+
 }
