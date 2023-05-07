@@ -7,7 +7,7 @@ import primitives.Vector;
  * Sphere class represents three-dimensional Sphere
  */
 public class Sphere extends RadialGeometry {
-    private Point center;
+    final Point center;
 
     /**
      * sphere constructor use radius and point.
@@ -22,6 +22,6 @@ public class Sphere extends RadialGeometry {
 
     @Override
     public Vector getNormal(Point point) {
-        return null;
+        return point.subtract(center).normalize();
     }
 }

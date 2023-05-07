@@ -15,7 +15,8 @@ public class Triangle extends Polygon {
      * @param point2 the second point to calculate the triangle.
      * @param point3 the third point to calculate the triangle.
      */
-    public Triangle(Point point1, Point point2, Point point3) {
+    public Triangle(Point point1, Point point2, Point
+            point3) {
         super(point1, point1, point1);
     }
 

@@ -84,6 +84,6 @@ class VectorTest {
         assertEquals(new Vector(2,4,6),v1.scale(2),"Vector method scale is wrong");
 
         // =============== Boundary Values Tests ==================
-        
+
     }
 }
