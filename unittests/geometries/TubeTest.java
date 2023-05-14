@@ -16,16 +16,16 @@ class TubeTest {
     void getNormal() {
 
         // ============ Equivalence Partitions Tests ==============
-        Point point = new Point(1,0,0);
-        Vector vector = new Vector(0,0,3);
-        Ray ray = new Ray(point,vector);
-        Tube tube = new Tube(1,ray);
+        Point point = new Point(1, 0, 0);
+        Vector vector = new Vector(0, 0, 3);
+        Ray ray = new Ray(point, vector);
+        Tube tube = new Tube(1, ray);
 
         // TC01: Test that the normal of the tube is proper
-        assertEquals(new Vector(1,0,0),
-                tube.getNormal(new Point(3,0,0)),"Tube method getNormal is wrong");
+        assertEquals(new Vector(1, 0, 0),
+                tube.getNormal(new Point(3, 0, 0)), "Tube method getNormal is wrong");
 
         // =============== Boundary Values Tests ==================
-        
+
     }
 }
