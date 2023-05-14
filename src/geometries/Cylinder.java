@@ -24,7 +24,13 @@ public class Cylinder extends Tube {
 
     @Override
     public Vector getNormal(Point point) {
-        return axisRay.getDir().normalize();
+        //TODO: bonus- do the good if
+        if(true) {
+            return super.getNormal(point);
+        }
+        else{
+            return axisRay.getDir().normalize();
+        }
     }
 
 }
