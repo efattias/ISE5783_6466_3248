@@ -27,6 +27,7 @@ public class Tube extends RadialGeometry {
 
     @Override
     public Vector getNormal(Point point) {
+        //TODO: check if the get point is on the tube or in else space
         double t = axisRay.getDir().dotProduct(point.subtract(axisRay.getP0()));
         Point o;
         if(t!=0){
