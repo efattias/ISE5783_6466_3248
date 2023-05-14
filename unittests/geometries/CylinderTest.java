@@ -18,7 +18,7 @@ class CylinderTest {
         Ray ray = new Ray(point, vector);
         Cylinder cylinder = new Cylinder(1, ray, 1);
         assertEquals(new Vector(0, 1, 0), cylinder.getNormal(point), "Cylinder method getNormal is wrong");
-
+        fail("bad");
         // =============== Boundary Values Tests ==================
     }
 }
