@@ -36,6 +36,12 @@ public class Tube extends RadialGeometry {
         else{
             o = axisRay.getP0();
         }
+
+        Vector normal = point.subtract(o);
+
+        if(normal.lengthSquared() != (radius * radius ))
+            return null;
+
         return point.subtract(o).normalize();
     }
 }
