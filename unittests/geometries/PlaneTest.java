@@ -54,4 +54,7 @@ class PlaneTest {
     }
 
 
+    @Test
+    void findIntsersections() {
+    }
 }

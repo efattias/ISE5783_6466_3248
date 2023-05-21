@@ -18,4 +18,8 @@ class TriangleTest {
         // =============== Boundary Values Tests ==================
 
     }
+
+    @Test
+    void findIntsersections() {
+    }
 }

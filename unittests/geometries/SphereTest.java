@@ -17,4 +17,8 @@ class SphereTest {
         // =============== Boundary Values Tests ==================
 
     }
+
+    @Test
+    void findIntsersections() {
+    }
 }

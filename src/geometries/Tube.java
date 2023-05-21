@@ -4,6 +4,8 @@ import primitives.Point;
 import primitives.Ray;
 import primitives.Vector;
 
+import java.util.List;
+
 /**
  * tube class represents three-dimensional tube
  */
@@ -43,5 +45,10 @@ public class Tube extends RadialGeometry {
             return null;
 
         return point.subtract(o).normalize();
+    }
+
+    @Override
+    public List<Point> findIntsersections(Ray ray) {
+        return null;
     }
 }

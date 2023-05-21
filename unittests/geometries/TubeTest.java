@@ -32,4 +32,8 @@ class TubeTest {
         // TC03: Test the case when o and p are the same point. ((p - p0) is orthogonal to v - the ray direction)
         assertEquals(new Vector(1, 0, 0), tube.getNormal(new Point(2, 0, 2)), "Tube method getNormal is wrong");
     }
+
+    @Test
+    void findIntsersections() {
+    }
 }
