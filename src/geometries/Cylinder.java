@@ -25,7 +25,6 @@ public class Cylinder extends Tube {
     @Override
     public Vector getNormal(Point point) {
 
-        //TODO: bonus- check also if the point is on the bases
         Point axisRayP0 = axisRay.getP0();
         if (point.distance(axisRayP0) <= radius)    // on the base circle of the cylinder.
             return axisRay.getDir().scale(-1);
