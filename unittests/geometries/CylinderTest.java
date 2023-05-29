@@ -22,10 +22,10 @@ class CylinderTest {
         assertEquals(new Vector(1, 0, 0), cylinder.getNormal(new Point(2, 0, 3)), "Cylinder method getNormal is wrong");
 
         // TC02: Test that the normal of the cylinder is proper, the point is on the base of the cylinder.
-        assertEquals(new Vector(1, 0, 0), cylinder.getNormal(new Point(1, 0, 2)), "Cylinder method getNormal is wrong");
+        assertEquals(new Vector(0, 0, -1), cylinder.getNormal(new Point(1, 0, 2)), "Cylinder method getNormal is wrong");
 
         // TC03: Test that the normal of the cylinder is proper, the point is on the base of the cylinder.
-        assertEquals(new Vector(1, 0, 0), cylinder.getNormal(new Point(1, 0, 4)), "Cylinder method getNormal is wrong");
+        assertEquals(new Vector(0, 0, 1), cylinder.getNormal(new Point(1, 0, 4)), "Cylinder method getNormal is wrong");
 
         // =============== Boundary Values Tests ==================
 
@@ -36,7 +36,7 @@ class CylinderTest {
         assertEquals(null, cylinder.getNormal(new Point(5, 0, 0)), "Cylinder method getNormal is wrong");
 
         // TC04: Test the case when o and p are the same point. ((p - p0) is orthogonal to v - the ray direction)
-        assertEquals(new Vector(1, 0, 0), cylinder.getNormal(new Point(2, 0, 2)), "Cylinder method getNormal is wrong");
+        assertEquals(new Vector(0, 0, -1), cylinder.getNormal(new Point(2, 0, 2)), "Cylinder method getNormal is wrong");
 
     }
 }
