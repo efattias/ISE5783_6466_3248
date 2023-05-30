@@ -24,19 +24,16 @@ public class Cylinder extends Tube {
 
     @Override
     public Vector getNormal(Point point) {
-        //TODO: bonus- do the good if
-        double t = axisRay.getDir().dotProduct(point.subtract(axisRay.getP0()));
 
-        //TODO: bonus- check also if the point is on the bases
-        // if the point is not on the cylinder
-        if (
-                (super.getNormal(point) == null) || t > height)
-            return null;
+        Point axisRayP0 = axisRay.getP0();
+        if (point.distance(axisRayP0) <= radius)    // on the base circle of the cylinder.
+            return axisRay.getDir().scale(-1);
 
-        // if the point is on the base of the cylinder
-        if(t == 0 || t == height) {
-            return axisRay.getDir().normalize();
-        }
+        Vector heightVector = axisRay.getDir().scale(height);
+        axisRayP0 = axisRayP0.add(heightVector);
+
+        if (point.distance(axisRayP0) <= radius)    // on the second base circle of the cylinder.
+            return axisRay.getDir();
 
         // the regular case we calculate like the normal of the tube
         return super.getNormal(point);

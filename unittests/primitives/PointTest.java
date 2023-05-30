@@ -14,7 +14,7 @@ class PointTest {
         // ============ Equivalence Partitions Tests ==============
         Point p1 = new Point(1, 1, 1);
         Point p2 = new Point(2, 2, 2);
-        assertEquals(new Point(3, 3, 3), p1.add(new Vector(p2.xyz)), "Point method add is wrong");
+        assertEquals(new Point(3, 3, 3), p1.add(new Vector(p2.xyz)), "Point method add wrong");
 
         // =============== Boundary Values Tests ==================
 
