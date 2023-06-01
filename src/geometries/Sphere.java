@@ -62,18 +62,6 @@ public class Sphere extends RadialGeometry {
         if(t2>0)
             intersectionsArr.add(ray.getP0().add(ray.getDir().scale(t2)));
         return intersectionsArr;
-        /*else
-        {
-            if(t1>0 || t2>0)//two intersections
-            {
-                ArrayList<Point> arr= new ArrayList<Point>();
-                if(t1 >0)
-                    arr.add(ray.getP0().add(ray.getDir().scale(t1)));
-                if(t2>0)
-                    arr.add(ray.getP0().add(ray.getDir().scale(t2)));
-                return arr;
-            }
-            return null;
-        }*/
+
     }
 }
