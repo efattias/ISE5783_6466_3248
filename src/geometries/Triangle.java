@@ -6,6 +6,8 @@ import primitives.Vector;
 
 import java.util.List;
 
+import static primitives.Util.alignZero;
+
 /**
  * Triangle class represents two-dimensional triangle in 3D Cartesian coordinate
  */
@@ -29,6 +31,31 @@ public class Triangle extends Polygon {
 
     @Override
     public List<Point> findIntsersections(Ray ray) {
+
+        if (plane.findIntsersections(ray) == null)
+            return null;
+
+        Vector v1 = vertices.get(0).subtract(ray.getP0());
+        Vector v2 = vertices.get(1).subtract(ray.getP0());
+        Vector v3 = vertices.get(2).subtract(ray.getP0());
+
+        Vector n1 = v1.crossProduct(v2).normalize();
+        Vector n2 = v2.crossProduct(v3).normalize();
+        Vector n3 = v3.crossProduct(v1).normalize();
+
+        /**
+         * check if all the result of the dot products of v*n1,v*n2,v*n3 have the same sign (+/-)
+         */
+        if(((alignZero(ray.getDir().dotProduct(n1)) > 0) &&
+                (alignZero(ray.getDir().dotProduct(n2)) > 0) &&
+                (alignZero(ray.getDir().dotProduct(n3)) > 0))
+                ||
+                ((alignZero(ray.getDir().dotProduct(n1)) < 0) &&
+                        (alignZero(ray.getDir().dotProduct(n2)) < 0) &&
+                        (alignZero(ray.getDir().dotProduct(n3)) < 0)))
+            return plane.findIntsersections(ray);
+
         return null;
+        
     }
 }
