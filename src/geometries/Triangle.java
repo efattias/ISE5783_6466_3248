@@ -44,7 +44,10 @@ public class Triangle extends Polygon {
         Vector n3 = v3.crossProduct(v1).normalize();
 
         /**
+         * we arrive here if there is intersection point between the plane and the ray.
+         * now we check if that point is in the triangle
          * check if all the result of the dot products of v*n1,v*n2,v*n3 have the same sign (+/-)
+         * in that case - the intersection point is in the triangle/
          */
         if(((alignZero(ray.getDir().dotProduct(n1)) > 0) &&
                 (alignZero(ray.getDir().dotProduct(n2)) > 0) &&
@@ -56,6 +59,6 @@ public class Triangle extends Polygon {
             return plane.findIntsersections(ray);
 
         return null;
-        
+
     }
 }
