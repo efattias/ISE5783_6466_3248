@@ -20,6 +20,6 @@ class TriangleTest {
     }
 
     @Test
-    void findIntsersections() {
+    void findIntersections() {
     }
 }

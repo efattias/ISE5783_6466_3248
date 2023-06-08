@@ -17,10 +17,10 @@ class GeometriesTest {
     }
 
     /**
-     * Test method for {@link Geometries#findIntsersections(Ray)}.
+     * Test method for {@link Geometries#findIntersections(Ray)}.
      */
     @Test
-    void findIntsersections() {
+    void findIntersections() {
         Sphere sphere = new Sphere(2, new Point(2,0,0));
         Plane plane = new Plane(new Point(1,1,0.5), new Vector(0, 0, 1));
         Triangle triangle = new Triangle(new Point(0, 1, 0), new Point(0, -1, 0), new Point(3,0,0));
@@ -30,27 +30,27 @@ class GeometriesTest {
 
         // TC04: Ray intersects only a few shape (3 points)
         Ray ray = new Ray(new Point(1,1,-2), new Vector(0,0,1));
-        assertEquals(3, geometries.findIntsersections(ray).size(), "Ray intersects only sphere and plane (3 points)- wrong points of intersection");
+        assertEquals(3, geometries.findIntersections(ray).size(), "Ray intersects only sphere and plane (3 points)- wrong points of intersection");
 
 
         // =============== Boundary Values Tests ==================
 
         // TC01: Empty collection of geometries
         geometries = new Geometries();
-        assertNull(geometries.findIntsersections(ray), "Empty collection of geometries - found an intersection");
+        assertNull(geometries.findIntersections(ray), "Empty collection of geometries - found an intersection");
 
         // TC02: Ray doesn't intersect any geometries (0 points)
         ray = new Ray(new Point(2.5,-5.5,-2), new Vector(6.5,10.5,-3));
-        assertNull(geometries.findIntsersections(ray),
+        assertNull(geometries.findIntersections(ray),
                 "Ray doesn't intersect any geometries (0 points) - found a point of intersection");
 
-        // TC03: Ray intersects one the geometries (1 points)
+        // TC03: Ray intersects one the geometries (1 point)
         ray = new Ray(new Point(5, 0, -2), new Vector(0, 0, 1));
-        assertEquals(1, geometries.findIntsersections(ray).size(), "Ray intersects one the geometries (1 points) - wrong points of intersection");
+        assertEquals(1, geometries.findIntersections(ray).size(), "Ray intersects one the geometries (1 points) - wrong points of intersection");
 
         // TC05: Ray intersects all the geometries (4 points)
         ray = new Ray(new Point(0.5, 0.5, -2), new Vector(0, 0, 1));
-        assertEquals(4, geometries.findIntsersections(ray).size(), "Ray intersects all the geometries (4 points) - wrong points of intersection");
+        assertEquals(4, geometries.findIntersections(ray).size(), "Ray intersects all the geometries (4 points) - wrong points of intersection");
 
 
 

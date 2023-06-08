@@ -30,9 +30,9 @@ public class Triangle extends Polygon {
     }
 
     @Override
-    public List<Point> findIntsersections(Ray ray) {
+    public List<Point> findIntersections(Ray ray) {
 
-        if (plane.findIntsersections(ray) == null)
+        if (plane.findIntersections(ray) == null)
             return null;
 
         Vector v1 = vertices.get(0).subtract(ray.getP0());
@@ -56,7 +56,7 @@ public class Triangle extends Polygon {
                 ((alignZero(ray.getDir().dotProduct(n1)) < 0) &&
                         (alignZero(ray.getDir().dotProduct(n2)) < 0) &&
                         (alignZero(ray.getDir().dotProduct(n3)) < 0)))
-            return plane.findIntsersections(ray);
+            return plane.findIntersections(ray);
 
         return null;
 

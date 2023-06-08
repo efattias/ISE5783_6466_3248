@@ -2,6 +2,7 @@ package geometries;
 
 import org.junit.jupiter.api.Test;
 import primitives.Point;
+import primitives.Ray;
 import primitives.Vector;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -55,7 +56,12 @@ class PlaneTest {
 
 
     @Test
-    void findIntsersections() {
-        Plane plane= new Plane(new Point(1,0,0), new Point(0,1,0), new Point(1,1,0));
+    void findIntersections() {
+        Point p0 = new Point(1.5,0,1);
+        Vector dir = new Vector(3,0,2);
+        Ray ray = new Ray(p0, dir);
+        Plane plane= new Plane(new Point(1,3,0), new Point(0,3,0), new Point(0,3,1));
+        assertEquals(new Point(3,0,2), plane.findIntersections(ray), "plane method findIntersections is wrong");
+
     }
 }

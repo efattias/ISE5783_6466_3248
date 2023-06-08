@@ -25,12 +25,12 @@ public class Geometries implements Intersectable{
     }
 
     @Override
-    public List<Point> findIntsersections(Ray ray) {
+    public List<Point> findIntersections(Ray ray) {
         List<Point> Intersection = new LinkedList<>();
 
         //go threw all the geometries and add their intersections
         for (Intersectable intersectable: geometries) {
-            List<Point> currentIntersection = intersectable.findIntsersections(ray);
+            List<Point> currentIntersection = intersectable.findIntersections(ray);
             if(currentIntersection != null) //no intersection was found
                 Intersection.addAll(currentIntersection);
         }
