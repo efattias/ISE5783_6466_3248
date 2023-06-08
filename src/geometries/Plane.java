@@ -1,10 +1,14 @@
 package geometries;
 
+import primitives.Double3;
 import primitives.Point;
 import primitives.Ray;
 import primitives.Vector;
 
 import java.util.List;
+
+import static primitives.Util.alignZero;
+import static primitives.Util.isZero;
 
 /**
  * plane class represents three-dimensional plane.
@@ -68,14 +72,35 @@ public class Plane implements Geometry {
         return normal;
     }
 
-    public List<Point> findIntsersections(Ray ray) {
-        return null;
-    }
 
-    /*@Override
+    @Override
     public List<Point> findIntsersections(Ray ray) {
+
+        Point p0 = ray.getP0();
         Vector v = ray.getDir();
-        Vector vector1 = q0.subtract(ray.getP0());
-        if()
-    }*/
+        Vector p0_Q0 = q0.subtract(ray.getP0());
+        double nv = alignZero(normal.dotProduct(v));
+        double nQ0P0 = alignZero(normal.dotProduct(p0_Q0));
+
+        if(q0.equals(p0))
+            return  null;
+
+        // numerator
+        if(isZero(nQ0P0))
+            return  null;
+
+        // denominator
+        if(isZero(nv))
+            return  null;
+
+        double t = alignZero(nQ0P0 / nv);
+
+        if(t <= 0)
+            return null;
+
+        Point p = ray.getPoint(t);
+
+        return List.of(p);
+
+    }
 }
