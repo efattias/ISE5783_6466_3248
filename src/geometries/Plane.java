@@ -77,16 +77,14 @@ public class Plane implements Geometry {
     public List<Point> findIntersections(Ray ray) {
 
         Point p0 = ray.getP0();
-        Vector v = ray.getDir();
-        Vector p0_Q0 = q0.subtract(ray.getP0());
-        double nv = alignZero(normal.dotProduct(v));
-        double nQ0P0 = alignZero(normal.dotProduct(p0_Q0));
 
         if(q0.equals(p0))
             return  null;
 
-
-
+        Vector v = ray.getDir();
+        Vector p0_Q0 = q0.subtract(p0);
+        double nv = alignZero(normal.dotProduct(v));
+        double nQ0P0 = alignZero(normal.dotProduct(p0_Q0));
 
         // numerator
         if(isZero(nQ0P0))
