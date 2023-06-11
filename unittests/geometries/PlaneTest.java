@@ -4,6 +4,9 @@ import org.junit.jupiter.api.Test;
 import primitives.Point;
 import primitives.Ray;
 import primitives.Vector;
+import java.util.List;
+
+import java.awt.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -48,7 +51,7 @@ class PlaneTest {
         v1 = p2.subtract(p1);
         v2 = p3.subtract(p2);
         result = v1.crossProduct(v2).normalize();
-        assertEquals(result, p.getNormal(), "plane method getNormal is wrong");
+        assertEquals(result, p.getNormal(), "plane's method getNormal is wrong");
 
         // =============== Boundary Values Tests ==================
 
@@ -57,11 +60,49 @@ class PlaneTest {
 
     @Test
     void findIntersections() {
+        // ============ Equivalence Partitions Tests ==============
+        // TC01: ray that isn't orthogonal to the plane,is not on the plane. the ray has
+        // intersection point with the ray
         Point p0 = new Point(1.5,0,1);
         Vector dir = new Vector(3,0,2);
         Ray ray = new Ray(p0, dir);
-        Plane plane= new Plane(new Point(1,3,0), new Point(0,3,0), new Point(0,3,1));
-        assertEquals(new Point(3,0,2), plane.findIntersections(ray), "plane method findIntersections is wrong");
+        Plane plane= new Plane(new Point(3,1,0), new Point(3,0,0), new Point(3,0,1));
+        assertEquals(List.of(new Point(3,0,2)), plane.findIntersections(ray), "plane's method findIntersections is wrong");
+
+        // TC02: ray that isn't orthogonal to the plane,is not on the plane. the ray don't have
+        // intersection point with the ray
+        Vector dir2 = new Vector(-3,0,-2);
+        Ray ray2 = new Ray(p0, dir2);
+        assertEquals(null, plane.findIntersections(ray2), "plane's method findIntersections is wrong");
+
+        // =============== Boundary Values Tests ==================
+        // TC03: ray that isn't orthogonal to the plane,is not on the plane. the ray is
+        // parallel to the plain
+        Point p3 = new Point(0,0,1);
+        Vector dir3 = new Vector(0,0,2);
+        Ray ray3 = new Ray(p3, dir3);
+        assertEquals(null, plane.findIntersections(ray3), "plane's method findIntersections is wrong");
+
+        // TC04: ray that isn't orthogonal to the plane, the ray is on the plane. (merges with the plain)
+        Point p4 = new Point(3,0,0);
+        Vector dir4 = new Vector(3,0,5);
+        Ray ray4 = new Ray(p4, dir4);
+        assertEquals(null, plane.findIntersections(ray4), "plane's method findIntersections is wrong");
+
+        // TC05: ray that is orthogonal to the plane, starts before the plain
+        Point p5 = new Point(1,0,2);
+        Vector dir5 = new Vector(1,0,0);
+        Ray ray5 = new Ray(p5, dir5);
+        assertEquals(List.of(new Point(3,0,2)), plane.findIntersections(ray5), "plane's method findIntersections is wrong");
+
+        // TC06: ray that is orthogonal to the plane, starts on the plain
+        Point p6 = new Point(3,0,2);
+        Ray ray6 = new Ray(p6, dir5);
+        assertEquals(null, plane.findIntersections(ray5), "plane's method findIntersections is wrong");
+
+
+
+
 
     }
 }

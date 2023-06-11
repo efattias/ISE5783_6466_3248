@@ -85,6 +85,9 @@ public class Plane implements Geometry {
         if(q0.equals(p0))
             return  null;
 
+
+
+
         // numerator
         if(isZero(nQ0P0))
             return  null;
