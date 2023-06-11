@@ -33,15 +33,14 @@ public class Sphere extends RadialGeometry {
 
     @Override
     public List<Point> findIntersections(Ray ray) {
-        List<Point> intersectionsArr = new ArrayList<>();
         Vector u;
+        Point p1;
 
         try {
             u = center.subtract(ray.getP0());
-        }
-        catch (IllegalArgumentException exception){//if p0 is the center of the point- u will the zero vector-should be an error
-            intersectionsArr.add(ray.getP0().add(ray.getDir().scale(radius)));
-            return intersectionsArr;
+        } catch (IllegalArgumentException exception){//if p0 is the center of the point- u will the zero vector-should be an error
+            p1 = ray.getPoint(radius);
+            return List.of(p1);
         }
 
         double tm= u.dotProduct(ray.getDir());
@@ -57,11 +56,22 @@ public class Sphere extends RadialGeometry {
         if (alignZero(t1)<=0 && alignZero(t2)<=0)//one intersection
             return null;
 
-        if(t1>0)
-            intersectionsArr.add(ray.getP0().add(ray.getDir().scale(t1)));
-        if(t2>0)
-            intersectionsArr.add(ray.getP0().add(ray.getDir().scale(t2)));
-        return intersectionsArr;
+        Point p2;
 
+        if(t1>0 && t2>0){
+            p1 = ray.getPoint(t1);
+            p2 = ray.getPoint(t2);
+            return List.of(p1,p2);
+        }
+        if(t1>0){
+            p1 = ray.getPoint(t1);
+            return List.of(p1);
+        }
+
+        if(t2>0){
+            p2 = ray.getPoint(t2);
+            return List.of(p2);
+        }
+        return null;
     }
 }
