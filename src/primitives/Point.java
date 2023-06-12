@@ -12,6 +12,8 @@ public class Point {
      * double 3 field. contains the 3 values of the point (d1,d2,d3)
      */
     final Double3 xyz;
+    //the ZERO vector
+    public static final Point ZERO = new Point(0, 0, 0);
 
     /**
      * constructor to initialize a point. point contains 3 values the constructor get the values and
@@ -31,7 +33,6 @@ public class Point {
      */
     Point(Double3 d3) {
         this.xyz = d3;
-
     }
 
     /**
