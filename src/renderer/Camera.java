@@ -15,7 +15,35 @@ public class Camera {
     private double height;
     private double distance;
 
-    public Camera(Point p,Vector to, Vector up)throws IllegalAccessException {
+    public Point getP0() {
+        return p0;
+    }
+
+    public Vector getvUp() {
+        return vUp;
+    }
+
+    public Vector getvTo() {
+        return vTo;
+    }
+
+    public Vector getvRight() {
+        return vRight;
+    }
+
+    public double getWidth() {
+        return width;
+    }
+
+    public double getHeight() {
+        return height;
+    }
+
+    public double getDistance() {
+        return distance;
+    }
+
+    public Camera(Point p, Vector to, Vector up)throws IllegalAccessException {
         vUp =up.normalize();
         vTo =to.normalize();
 
