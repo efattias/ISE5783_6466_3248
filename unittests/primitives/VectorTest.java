@@ -82,7 +82,7 @@ class VectorTest {
         Vector v3 = new Vector(0, 3, -2);
         Vector vr = v1.crossProduct(v3);
 
-        
+
         // ============ Equivalence Partitions Tests ==============
 
         // TC01: crossProduct() for two parallel vectors throws an exception

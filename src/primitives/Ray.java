@@ -2,6 +2,8 @@ package primitives;
 
 import java.util.Objects;
 
+import static primitives.Util.isZero;
+
 /**
  * The class Ray Is sets type of objects that contain a vector (direction) and also a point.
  */
@@ -53,7 +55,7 @@ public class Ray {
     }
 
     public Point getPoint(double t) {
-        if(t == 0)
+        if(isZero(t))
             return p0;
         Point p = p0.add(dir.scale(t));
         return p;
