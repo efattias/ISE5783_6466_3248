@@ -66,6 +66,7 @@ public class Camera {
         return this;
     }
 
+
     public Ray constructRay(int nX, int nY, int j, int i){
 
         Point planeCenter = p0.add(vTo.scale(distance));
@@ -88,5 +89,11 @@ public class Camera {
 
         Vector vij = pij.subtract(p0);
         return new Ray(p0, vij);
+    }
+
+
+    public Camera setImageWriter(ImageWriter baseRenderTest) {
+        
+        return this;
     }
 }
