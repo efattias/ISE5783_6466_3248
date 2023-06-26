@@ -13,6 +13,7 @@ public class Geometries implements Intersectable{
         geometries = new LinkedList<Intersectable>();
     }
 
+
     public Geometries(Intersectable... geometries) {
         this.geometries = new LinkedList<Intersectable>();
         this.add(geometries);

@@ -105,13 +105,13 @@ class PlaneTest {
         Ray ray7 = new Ray(p7, dir5);
         assertEquals(null, plane.findIntersections(ray7), "plane's method findIntersections is wrong");
 
-        // TC08: ray that is orthogonal to the plane, starts after the plain
+        // TC08: ray that isn't orthogonal to the plane, starts in the plain
         Point p8 = new Point(3,0,0);
         Vector dir8 = new Vector(0,1,1);
         Ray ray8 = new Ray(p8, dir8);
         assertEquals(null, plane.findIntersections(ray8), "plane's method findIntersections is wrong");
 
-        // TC09: ray that is orthogonal to the plane, starts after the plain
+        // TC09: ray that isn't orthogonal to the plane, starts in the point of the plain
         Point p9 = new Point(3,1,0);
         Ray ray9 = new Ray(p9, dir8);
         assertEquals(null, plane.findIntersections(ray9), "plane's method findIntersections is wrong");

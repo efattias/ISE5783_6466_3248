@@ -1,6 +1,9 @@
 package primitives;
 
+import java.util.List;
 import java.util.Objects;
+
+import static primitives.Util.isZero;
 
 /**
  * The class Ray Is sets type of objects that contain a vector (direction) and also a point.
@@ -53,10 +56,25 @@ public class Ray {
     }
 
     public Point getPoint(double t) {
-        if(t == 0)
+        if(isZero(t))
             return p0;
         Point p = p0.add(dir.scale(t));
         return p;
 
+    }
+
+    public Point findClosestPoint(List<Point> points) {
+        if (points == null || points.isEmpty())
+            return null;
+        Point closest = null;
+        double minDistance = Double.MAX_VALUE;
+        for (Point p : points) {
+            double distance = p.distance(p0);
+            if (distance < minDistance) {
+                closest = p;
+                minDistance = distance;
+            }
+        }
+        return closest;
     }
 }

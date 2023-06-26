@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4671c04d-5307-4a9a-99e0-5720f99fc5c8" name="Changes" comment="finish camera and getters">
-      <change afterPath="$PROJECT_DIR$/src/primitives/Color.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/renderer/ImageWriter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/unittests/renderer/ImageWriterTest.java" afterDir="false" />
+    <list default="true" id="4671c04d-5307-4a9a-99e0-5720f99fc5c8" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/unittests/renderer/LightsTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/geometries/Geometry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Geometry.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,13 +17,14 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="JUnit5 Test Class" />
         <option value="Interface" />
         <option value="Class" />
-        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="PUSH_AUTO_UPDATE" value="true" />
     <option name="PUSH_TAGS">
       <GitPushTagMode>
         <option name="argument" value="--tags" />
@@ -47,25 +47,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/user/A לימודים/שנה ג/סמסטר ב/מבוא להנדסת תוכנה/ISE5782_3096_7612-PR05&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Downloaded.Files.Path.Enabled": "false",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "last_opened_file_path": "C:/Users/esthe/programing/ISE5783/unittests/renderer",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="geometries" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\esthe\programing\ISE5783\unittests\renderer" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
@@ -80,55 +83,63 @@
       <recent name="primitives" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.ImageWriterTest">
-    <configuration name="CameraTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.All in ISE5783_6466_3248">
+    <configuration name="All in ISE5783_6466_3248" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ISE5783_6466_3248" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="renderer.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="renderer" />
-      <option name="MAIN_CLASS_NAME" value="renderer.CameraTest" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CameraTest.testConstructRay (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="GeometriesTest.findIntersections" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ISE5783_6466_3248" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="renderer.*" />
+          <option name="PATTERN" value="geometries.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="renderer" />
-      <option name="MAIN_CLASS_NAME" value="renderer.CameraTest" />
-      <option name="METHOD_NAME" value="testConstructRay" />
+      <option name="PACKAGE_NAME" value="geometries" />
+      <option name="MAIN_CLASS_NAME" value="geometries.GeometriesTest" />
+      <option name="METHOD_NAME" value="findIntersections" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CameraTest.testConstructRay" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="RenderTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ISE5783_6466_3248" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="unittests.renderer.*" />
+          <option name="PATTERN" value="renderer.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="unittests.renderer" />
-      <option name="MAIN_CLASS_NAME" value="unittests.renderer.CameraTest" />
-      <option name="METHOD_NAME" value="testConstructRay" />
+      <option name="PACKAGE_NAME" value="renderer" />
+      <option name="MAIN_CLASS_NAME" value="renderer.RenderTests" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RenderTests.basicRenderXml" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ISE5783_6466_3248" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="renderer.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="renderer" />
+      <option name="MAIN_CLASS_NAME" value="renderer.RenderTests" />
+      <option name="METHOD_NAME" value="basicRenderXml" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ImageWriterTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="renderer in ISE5783_6466_3248" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ISE5783_6466_3248" />
       <extension name="coverage">
         <pattern>
@@ -137,34 +148,18 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="renderer" />
-      <option name="MAIN_CLASS_NAME" value="renderer.ImageWriterTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="IntegrationTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ISE5783_6466_3248" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="renderer.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="renderer" />
-      <option name="MAIN_CLASS_NAME" value="renderer.IntegrationTests" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="package" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.ImageWriterTest" />
-        <item itemvalue="JUnit.IntegrationTests" />
-        <item itemvalue="JUnit.CameraTest" />
-        <item itemvalue="JUnit.CameraTest.testConstructRay (1)" />
-        <item itemvalue="JUnit.CameraTest.testConstructRay" />
+        <item itemvalue="JUnit.All in ISE5783_6466_3248" />
+        <item itemvalue="JUnit.GeometriesTest.findIntersections" />
+        <item itemvalue="JUnit.RenderTests" />
+        <item itemvalue="JUnit.RenderTests.basicRenderXml" />
+        <item itemvalue="JUnit.renderer in ISE5783_6466_3248" />
       </list>
     </recent_temporary>
   </component>
@@ -289,7 +284,35 @@
       <option name="project" value="LOCAL‎" />
       <updated>1687073449294</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL‎-00017" summary="finish camera and getters">
+      <created>1687367896328</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL‎-00017" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1687367896328</updated>
+    </task>
+    <task id="LOCAL‎-00018" summary="finish camera and getters">
+      <created>1687371475551</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL‎-00018" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1687371475551</updated>
+    </task>
+    <task id="LOCAL‎-00019" summary="finish camera and getters">
+      <created>1687714748695</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL‎-00019" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1687714748695</updated>
+    </task>
+    <task id="LOCAL‎-00020" summary="finish 5">
+      <created>1687761464017</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL‎-00020" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1687761464017</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -315,7 +338,8 @@
     <MESSAGE value="camera ang fix sphere test" />
     <MESSAGE value="more camera" />
     <MESSAGE value="finish camera and getters" />
-    <option name="LAST_COMMIT_MESSAGE" value="finish camera and getters" />
+    <MESSAGE value="finish 5" />
+    <option name="LAST_COMMIT_MESSAGE" value="finish 5" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -324,6 +348,16 @@
           <url>file://$PROJECT_DIR$/unittests/renderer/CameraTest.java</url>
           <line>29</line>
           <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/unittests/renderer/RenderTests.java</url>
+          <line>84</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/unittests/geometries/GeometriesTest.java</url>
+          <line>49</line>
+          <option name="timeStamp" value="7" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

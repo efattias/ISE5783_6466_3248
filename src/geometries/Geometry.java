@@ -6,7 +6,7 @@ import primitives.Vector;
 /**
  * A Geometry interface represents a geometric Shape
  */
-public interface Geometry extends Intersectable{
+public abstract class Geometry extends Intersectable{
 
     /**
      * this function calculate and return the shape normal.

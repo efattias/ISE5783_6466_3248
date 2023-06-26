@@ -45,6 +45,7 @@ class GeometriesTest {
                 "Ray doesn't intersect any geometries (0 points) - found a point of intersection");
 
         // TC03: Ray intersects one the geometries (1 point)
+        geometries = new Geometries(sphere, plane, triangle);
         ray = new Ray(new Point(5, 0, -2), new Vector(0, 0, 1));
         assertEquals(1, geometries.findIntersections(ray).size(), "Ray intersects one the geometries (1 points) - wrong points of intersection");
 

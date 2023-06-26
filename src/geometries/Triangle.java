@@ -35,6 +35,15 @@ public class Triangle extends Polygon {
         if (plane.findIntersections(ray) == null)
             return null;
 
+        /**
+         * we arrive here if there is intersection point between the plane and the ray.
+         * now we check if that point is in the triangle
+         * check if all the result of the dot products of v*n1,v*n2,v*n3 have the same sign (+/-)
+         * in that case - the intersection point is in the triangle
+         */
+
+
+        Vector v = ray.getDir();
         Vector v1 = vertices.get(0).subtract(ray.getP0());
         Vector v2 = vertices.get(1).subtract(ray.getP0());
         Vector v3 = vertices.get(2).subtract(ray.getP0());
@@ -43,19 +52,12 @@ public class Triangle extends Polygon {
         Vector n2 = v2.crossProduct(v3).normalize();
         Vector n3 = v3.crossProduct(v1).normalize();
 
-        /**
-         * we arrive here if there is intersection point between the plane and the ray.
-         * now we check if that point is in the triangle
-         * check if all the result of the dot products of v*n1,v*n2,v*n3 have the same sign (+/-)
-         * in that case - the intersection point is in the triangle/
-         */
-        if(((alignZero(ray.getDir().dotProduct(n1)) > 0) &&
-                (alignZero(ray.getDir().dotProduct(n2)) > 0) &&
-                (alignZero(ray.getDir().dotProduct(n3)) > 0))
-                ||
-                ((alignZero(ray.getDir().dotProduct(n1)) < 0) &&
-                        (alignZero(ray.getDir().dotProduct(n2)) < 0) &&
-                        (alignZero(ray.getDir().dotProduct(n3)) < 0)))
+        double check1 = alignZero(v.dotProduct(n1));
+        double check2 = alignZero(v.dotProduct(n2));
+        double check3 = alignZero(v.dotProduct(n3));
+
+        if(((check1 > 0) && (check2 > 0) && (check3 > 0)) ||
+                ((check1 < 0) && (check2 < 0) && (check3 < 0)))
             return plane.findIntersections(ray);
 
         return null;
