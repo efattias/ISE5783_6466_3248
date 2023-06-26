@@ -19,7 +19,7 @@ class TubeTest {
         Point point = new Point(0, 0, 2);
         Vector vector = new Vector(0, 0, 1);
         Ray ray = new Ray(point, vector);
-        Tube tube = new Tube(2, ray);
+        Tube tube = new Tube(ray,2);
 
         // TC01: Test that the normal of the tube is proper, a regular case.
         assertEquals(new Vector(1, 0, 0), tube.getNormal(new Point(2, 0, 3)), "Tube method getNormal is wrong");

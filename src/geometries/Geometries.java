@@ -6,38 +6,47 @@ import primitives.Ray;
 import java.util.LinkedList;
 import java.util.List;
 
-public class Geometries implements Intersectable{
-    List<Intersectable> geometries;
+/**
+ * Class represents a list of geometries in the scene
+ */
+public class Geometries extends Intersectable {
+    private final List<Intersectable> geometries = new LinkedList<>();
 
+    //use LinkedList instead of ArrayList for better performance in the future (if needed) - O(1) instead of O(n) for add and remove operations
     public Geometries() {
-        geometries = new LinkedList<Intersectable>();
     }
 
-
+    /**
+     * constructor for the class
+     * @param geometries list of geometries to add
+     */
     public Geometries(Intersectable... geometries) {
-        this.geometries = new LinkedList<Intersectable>();
-        this.add(geometries);
+        add(geometries);
     }
 
-    public void add(Intersectable... geometries){
-        for(Intersectable geom:geometries){
-            this.geometries.add(geom);
-        }
+    /**
+     * add geometries to the list
+     * @param geometries list of geometries to add
+     */
+    public void add(Intersectable... geometries) {
+        this.geometries.addAll(List.of(geometries));
     }
+
 
     @Override
-    public List<Point> findIntersections(Ray ray) {
-        List<Point> Intersection = new LinkedList<>();
-
-        //go threw all the geometries and add their intersections
-        for (Intersectable intersectable: geometries) {
-            List<Point> currentIntersection = intersectable.findIntersections(ray);
-            if(currentIntersection != null) //no intersection was found
-                Intersection.addAll(currentIntersection);
+    protected List<GeoPoint> findGeoIntersectionsHelper(Ray ray) {
+        List<GeoPoint> intersections = null;
+        for (Intersectable geometry : geometries) {
+            var temp = geometry.findGeoIntersections(ray);
+            if (temp != null) {
+                if (intersections == null)
+                    intersections = new LinkedList<>();
+                intersections.addAll(temp);
+            }
         }
+        return intersections;
 
-        if(Intersection.size() == 0)
-            return null;
-        return Intersection;
+
     }
+
 }

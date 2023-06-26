@@ -15,7 +15,7 @@ class SphereTest {
     void getNormal() {
 
         // ============ Equivalence Partitions Tests ==============
-        Sphere sp = new Sphere(5, new Point(0, 0, 0));
+        Sphere sp = new Sphere(new Point(0, 0, 0),5);
         assertEquals(new Vector(0, 0, 1), sp.getNormal(new Point(0, 0, 5)), "Bad normal to triangle");
         // =============== Boundary Values Tests ==================
 
@@ -23,7 +23,7 @@ class SphereTest {
 
     @Test
     void findIntersections() {
-        Sphere sphere = new Sphere(1d, new Point(1, 0, 0));
+        Sphere sphere = new Sphere(new Point(1, 0, 0),1d);
         Point point1;
         Point point2;
         // ============ Equivalence Partitions Tests ==============

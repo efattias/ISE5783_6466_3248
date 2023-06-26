@@ -4,39 +4,38 @@ import primitives.Point;
 import primitives.Ray;
 import primitives.Vector;
 
+import java.util.List;
+
 /**
- * cylinder class represents three-dimensional cylinder
+ * Class will be used to represent a Cylinder
  */
-public class Cylinder extends Tube {
-    private double height;
+public class Cylinder extends Tube{
+
+    final private double height;
 
     /**
-     * cylinder constructor use radius, ray and height.
-     *
-     * @param r   the cylinder radius.
-     * @param ray The direction ray of the cylinder.
-     * @param h   the height of the cylinder.
+     * Constructor for Cylinder
+     * @param axisRay central ray of Cylinder
+     * @param radius radius value
+     * @param height height value
      */
-    public Cylinder(double r, Ray ray, double h) {
-        super(r, ray);
-        height = h;
+    public Cylinder(Ray axisRay, double radius, double height) {
+        super(axisRay, radius);
+        this.height = height;
+    }
+
+    /**
+     * function that returns normal
+     * @param p point from which we want to receive normal
+     * @return normal
+     */
+    @Override
+    public Vector getNormal(Point p){
+        return null;
     }
 
     @Override
-    public Vector getNormal(Point point) {
-
-        Point axisRayP0 = axisRay.getP0();
-        if (point.distance(axisRayP0) <= radius)    // on the base circle of the cylinder.
-            return axisRay.getDir().scale(-1);
-
-        Vector heightVector = axisRay.getDir().scale(height);
-        axisRayP0 = axisRayP0.add(heightVector);
-
-        if (point.distance(axisRayP0) <= radius)    // on the second base circle of the cylinder.
-            return axisRay.getDir();
-
-        // the regular case we calculate like the normal of the tube
-        return super.getNormal(point);
+    public List<Point> findIntersections(Ray ray) {
+        return null;
     }
-
 }

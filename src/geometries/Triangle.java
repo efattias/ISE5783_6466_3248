@@ -9,58 +9,77 @@ import java.util.List;
 import static primitives.Util.alignZero;
 
 /**
- * Triangle class represents two-dimensional triangle in 3D Cartesian coordinate
+ * Class will be used to represent a triangle
  */
 public class Triangle extends Polygon {
 
     /**
-     * Triangle constructor use three points.
+     * Triangle constructor using polygon constructor with 3 points
      *
-     * @param point1 the first point to calculate the triangle.
-     * @param point2 the second point to calculate the triangle.
-     * @param point3 the third point to calculate the triangle.
+     * @param p0 first point
+     * @param p1 second point
+     * @param p2 third point
      */
-    public Triangle(Point point1, Point point2, Point point3) {
-        super(point1, point2, point3);
+    public Triangle(Point p0, Point p1, Point p2) {
+        super(p0, p1, p2);
     }
 
-    @Override
-    public Vector getNormal(Point point) {
-        return super.getNormal(point);
-    }
+    //    @Override
+//    public List<Point> findIntersections(Ray ray) {
+//        List<Point> result = this.plane.findIntersections(ray);
+//        if (result == null) return null;
+//
+//        Point p0 = this.vertices.get(0);
+//        Point p1 = this.vertices.get(1);
+//        Point p2 = this.vertices.get(2);
+//        Point p = result.get(0);
+//
+//        try {
+//            Vector n1 = p1.subtract(p0).crossProduct(p0.subtract(p));
+//            Vector n2 = p2.subtract(p1).crossProduct(p1.subtract(p));
+//            Vector n3 = p0.subtract(p2).crossProduct(p2.subtract(p));
+//
+//            double n1n2 = alignZero(n1.dotProduct(n2));
+//            if (n1n2 == 0) return null;
+//            double n2n3 = alignZero(n2.dotProduct(n3));
+//            if (n1n2 * n2n3 <= 0) return null; // must have same sign
+//            double n3n1 = alignZero(n3.dotProduct(n1));
+//            if (n1n2 * n3n1 <= 0) return null; // must have same sign
+//
+//            return result;
+//
+//        } catch (IllegalArgumentException ignore) {
+//            return null;
+//        }
+//
+//    }
+    protected List<GeoPoint> findGeoIntersectionsHelper(Ray ray) {
+        List<GeoPoint> result = this.plane.findGeoIntersections(ray);
+        if (result == null) return null;
 
-    @Override
-    public List<Point> findIntersections(Ray ray) {
+        Point p0 = this.vertices.get(0);
+        Point p1 = this.vertices.get(1);
+        Point p2 = this.vertices.get(2);
+        Point p = result.get(0).point;
 
-        if (plane.findIntersections(ray) == null)
+        try {
+            Vector n1 = p1.subtract(p0).crossProduct(p0.subtract(p));
+            Vector n2 = p2.subtract(p1).crossProduct(p1.subtract(p));
+            Vector n3 = p0.subtract(p2).crossProduct(p2.subtract(p));
+
+            double n1n2 = alignZero(n1.dotProduct(n2));
+            if (n1n2 == 0) return null;
+            double n2n3 = alignZero(n2.dotProduct(n3));
+            if (n1n2 * n2n3 <= 0) return null; // must have same sign
+            double n3n1 = alignZero(n3.dotProduct(n1));
+            if (n1n2 * n3n1 <= 0) return null; // must have same sign
+
+            return List.of(new GeoPoint(this, result.get(0).point));
+
+        } catch (IllegalArgumentException ignore) {
             return null;
-
-        /**
-         * we arrive here if there is intersection point between the plane and the ray.
-         * now we check if that point is in the triangle
-         * check if all the result of the dot products of v*n1,v*n2,v*n3 have the same sign (+/-)
-         * in that case - the intersection point is in the triangle
-         */
-
-
-        Vector v = ray.getDir();
-        Vector v1 = vertices.get(0).subtract(ray.getP0());
-        Vector v2 = vertices.get(1).subtract(ray.getP0());
-        Vector v3 = vertices.get(2).subtract(ray.getP0());
-
-        Vector n1 = v1.crossProduct(v2).normalize();
-        Vector n2 = v2.crossProduct(v3).normalize();
-        Vector n3 = v3.crossProduct(v1).normalize();
-
-        double check1 = alignZero(v.dotProduct(n1));
-        double check2 = alignZero(v.dotProduct(n2));
-        double check3 = alignZero(v.dotProduct(n3));
-
-        if(((check1 > 0) && (check2 > 0) && (check3 > 0)) ||
-                ((check1 < 0) && (check2 < 0) && (check3 < 0)))
-            return plane.findIntersections(ray);
-
-        return null;
-
+        }
     }
 }
+
+

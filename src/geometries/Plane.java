@@ -1,107 +1,77 @@
 package geometries;
 
-
 import primitives.Point;
 import primitives.Ray;
+import primitives.Util;
 import primitives.Vector;
 
 import java.util.List;
 
-import static primitives.Util.alignZero;
-import static primitives.Util.isZero;
-
 /**
- * plane class represents three-dimensional plane.
+ * Plane class represents a plane in 3D space with normal vector and a point on the plane
  */
-public class Plane implements Geometry {
-    /**
-     * by q0 we calculate the plane
-     */
-    Point q0;
-    /**
-     * By the normal we calculate the plane
-     */
-    Vector normal;
+public class Plane extends Geometry{
+
+    final private Point q0;
+    final private Vector normal;
 
     /**
-     * plane constructor use three point.
-     *
-     * @param point1 the first point to calculate the plane
-     * @param point2 the second point to calculate the plane
-     * @param point3 the third point to calculate the plane
+     * Constructor for plane with 3 points and calculates the normal vector of the plane
+     * @param p0 first point
+     * @param p1 second point
+     * @param p2 third point
+     * @throws IllegalArgumentException when the points are on the same line
      */
-    public Plane(Point point1, Point point2, Point point3) {
-        q0 = point1;
-        Vector v1 = point2.subtract(point1);
-        Vector v2 = point3.subtract(point2);
+    public Plane(Point p0, Point p1, Point p2) {
+        q0 = p0;
+        Vector v1 = p1.subtract(p2);
+        Vector v2 = p0.subtract(p1);
         normal = v1.crossProduct(v2).normalize();
-
     }
 
     /**
-     * plane constructor use point and vector
-     *
-     * @param point  a point in space to calculate the plane
-     * @param vector a direction vector to calculate the plane
+     * Constructor for plane with normal vector and a point on the plane
+     * @param p0 point on the plane
+     * @param v0 Vector on the plane
      */
-    public Plane(Point point, Vector vector) {
-        q0 = point;
-        normal = vector.normalize();
+    public Plane(Point p0, Vector v0){
+        q0 = p0;
+        normal = v0.normalize();
     }
-
     /**
-     * getter to q0
-     *
-     * @return the plane q0
+     * returns the normal vector of the plane
+     * @return normal Vector
      */
-    public Point getQ0() {
-        return q0;
-    }
 
-    /**
-     * getter to normal
-     *
-     * @return the plane normal
-     */
-    public Vector getNormal() {
+    public Vector getNormal(){
         return normal;
     }
 
     @Override
-    public Vector getNormal(Point point) {
+    public Vector getNormal(Point p0){
         return normal;
     }
 
 
     @Override
-    public List<Point> findIntersections(Ray ray) {
-
-        Point p0 = ray.getP0();
-
-        if(q0.equals(p0))
-            return  null;
-
-        Vector v = ray.getDir();
-        Vector p0_Q0 = q0.subtract(p0);
-        double nv = alignZero(normal.dotProduct(v));
-        double nQ0P0 = alignZero(normal.dotProduct(p0_Q0));
-
-        // numerator
-        if(isZero(nQ0P0))
-            return  null;
-
-        // denominator
-        if(isZero(nv))
-            return  null;
-
-        double t = alignZero(nQ0P0 / nv);
-
-        if(t <= 0)
+    protected List<GeoPoint> findGeoIntersectionsHelper(Ray ray) {
+        Vector u;
+        try {
+            u = q0.subtract(ray.getP0());
+        }catch (IllegalArgumentException ignore) {
+            //return null if ray starts at reference point of plane (we do this as to not create a 0 vector)
             return null;
+        }
 
-        Point p = ray.getPoint(t);
+        double denominator = normal.dotProduct(ray.getDir());
+        //return null if ray is parallel to plane (orthogonal to normal vector)
+        if (Util.isZero(denominator)) return null;
 
-        return List.of(p);
-
-    }
+        //calculate distance of point from plane
+        double t = Util.alignZero(u.dotProduct(normal) / denominator);
+        //return null if point is behind start of ray
+        return t <= 0 ? null : List.of(new GeoPoint(this, ray.getPoint(t)));    }
 }
+
+
+

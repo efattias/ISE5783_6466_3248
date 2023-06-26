@@ -16,7 +16,7 @@ class CylinderTest {
         Point point = new Point(0, 0, 2);
         Vector vector = new Vector(0, 0, 1);
         Ray ray = new Ray(point, vector);
-        Cylinder cylinder = new Cylinder(2, ray, 2);
+        Cylinder cylinder = new Cylinder( ray, 2,2);
 
         // TC01: Test that the normal of the cylinder is proper, the point is on the cylinder.
         assertEquals(new Vector(1, 0, 0), cylinder.getNormal(new Point(2, 0, 3)), "Cylinder method getNormal is wrong");

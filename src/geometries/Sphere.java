@@ -2,76 +2,82 @@ package geometries;
 
 import primitives.Point;
 import primitives.Ray;
+import primitives.Util;
 import primitives.Vector;
+
 import java.util.ArrayList;
 import java.util.List;
 
+import static java.lang.Math.sqrt;
 import static primitives.Util.alignZero;
-import static primitives.Util.isZero;
 
 /**
- * Sphere class represents three-dimensional Sphere
+ * Class will be used to represent a sphere
  */
-public class Sphere extends RadialGeometry {
-    final Point center;
+public class Sphere extends Geometry {
+
+    final private Point center;
+    final private double radius;
+    final private double radiusSquared;
 
     /**
-     * sphere constructor use radius and point.
+     * Constructor for sphere that receives center and radius
      *
-     * @param r     the sphere radius to calculate the sphere.
-     * @param point the sphere point to calculate the sphere.
+     * @param center center point
+     * @param radius radius value
      */
-    public Sphere(double r, Point point) {
-        super(r);
-        center = point;
+    public Sphere(Point center, double radius) {
+        this.center = center;
+        this.radius = radius;
+        this.radiusSquared = radius * radius;
+    }
+
+    /**
+     * function that returns center of sphere
+     *
+     * @return center of sphere
+     */
+
+    public Point getCenter() {
+        return center;
+    }
+
+    /**
+     * function that returns radius
+     *
+     * @return radius
+     */
+    public double getRadius() {
+        return radius;
     }
 
     @Override
-    public Vector getNormal(Point point) {
-        return point.subtract(center).normalize();
+    public Vector getNormal(Point p0) {
+        return p0.subtract(center).normalize();
     }
 
-    @Override
-    public List<Point> findIntersections(Ray ray) {
-        Vector u;
-        Point p1;
 
+    @Override
+    protected List<GeoPoint> findGeoIntersectionsHelper(Ray ray) {
+
+        Vector pointToCenter;
         try {
-            u = center.subtract(ray.getP0());
-        } catch (IllegalArgumentException exception){//if p0 is the center of the point- u will the zero vector-should be an error
-            p1 = ray.getPoint(radius);
-            return List.of(p1);
+            pointToCenter = center.subtract(ray.getP0());
+        } catch (IllegalArgumentException ignore) {
+            return List.of(new GeoPoint(this, ray.getPoint(radius)));
         }
 
-        double tm= u.dotProduct(ray.getDir());
-        double d= Math.sqrt(u.lengthSquared()-tm*tm);
+        double tm = pointToCenter.dotProduct(ray.getDir());
+        double distanceFromCenterSquared = pointToCenter.dotProduct(pointToCenter) - tm * tm;
+        double thSquared = radiusSquared - distanceFromCenterSquared;
+        //check that ray crosses area of sphere, if not then return null
+        if (alignZero(thSquared) <= 0) return null;
 
-        if (alignZero(d - radius) >= 0)         // ray crosses outside the sphere
-            return null;
-
-        double th= alignZero(Math.sqrt((radius*radius)-(d*d)));
-        double t1= tm+th;
-        double t2= tm-th;
-
-        if (alignZero(t1)<=0 && alignZero(t2)<=0)//one intersection
-            return null;
-
-        Point p2;
-
-        if(t1>0 && t2>0){
-            p1 = ray.getPoint(t1);
-            p2 = ray.getPoint(t2);
-            return List.of(p1,p2);
-        }
-        if(t1>0){
-            p1 = ray.getPoint(t1);
-            return List.of(p1);
-        }
-
-        if(t2>0){
-            p2 = ray.getPoint(t2);
-            return List.of(p2);
-        }
-        return null;
+        double th = sqrt(thSquared);
+        double secondDistance = tm + th;
+        if (alignZero(secondDistance) <= 0) return null;
+        double firstDistance = tm - th;
+        return firstDistance <= 0 ? List.of(new GeoPoint(this, ray.getPoint(secondDistance))) //
+                : List.of(new GeoPoint(this, ray.getPoint(firstDistance)), new GeoPoint(this, ray.getPoint(secondDistance)));
     }
 }

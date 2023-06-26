@@ -1,39 +1,57 @@
 package geometries;
 
-import primitives.Color;
-import primitives.Point;
-import primitives.Vector;
+import primitives.*;
+
+import java.util.List;
 
 /**
- * A Geometry interface represents a geometric Shape
+ * Interface that shapes extend from it
  */
-public abstract class Geometry implements Intersectable{
-
+public abstract class Geometry extends Intersectable {
     protected Color emission = Color.BLACK;
+    private Material material = new Material();
 
     /**
-     * getter for emission
-     * @return this emission
+     * Function will return normal Vector at a point on the geometry body
+     *
+     * @param p0 at a point on the geometry body
+     * @return the normal vector
+     */
+    public abstract Vector getNormal(Point p0);
+
+    /**
+     * Function will return the color of the geometry
+     *
+     * @return the color of the geometry
      */
     public Color getEmission() {
         return emission;
     }
 
     /**
-     * setter for emission
-     * @param emission new emission to put in this emission
-     * @return this geometry
+     * Function will return the material of the geometry
+     *
+     * @return the material of the geometry
      */
-    public Geometry setEmission(Color emission) {
-        this.emission = emission;
+    public Material getMaterial() {
+        return material;
+    }
+
+    /**
+     * Function will set the color of the geometry
+     */
+    public Geometry setEmission(Color _emission) {
+        emission = _emission;
         return this;
     }
 
     /**
-     * this function calculate and return the shape normal.
-     *
-     * @param point A point to calculate normal
-     * @return the shape normal
+     * Function will set the material of the geometry
      */
-    public abstract Vector getNormal(Point point);
+    public Geometry setMaterial(Material _material) {
+        material = _material;
+        return this;
+    }
+
+
 }

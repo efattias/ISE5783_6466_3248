@@ -1,54 +1,62 @@
 package geometries;
 
-import primitives.Point;
-import primitives.Ray;
-import primitives.Vector;
+import primitives.*;
 
 import java.util.List;
 
+import static primitives.Util.*;
+
 /**
- * tube class represents three-dimensional tube
+ * Class will be used to represent a Tube
  */
-public class Tube extends RadialGeometry {
+public class Tube extends Geometry {
+
+    final protected Ray axisRay;
+    final protected double radius;
 
     /**
-     * the direction ray of the tube
-     */
-    Ray axisRay;
-
-    /**
-     * Tube constructor use radius and ray.
+     * Constructor for Tube class with a ray and a radius
      *
-     * @param r   the radius to calculate the tube.
-     * @param ray the ray to calculate the tube.
+     * @param axisRay ray value
+     * @param radius  radius value
      */
-    public Tube(double r, Ray ray) {
-        super(r);
-        axisRay = ray;
+    public Tube(Ray axisRay, double radius) {
+        this.axisRay = axisRay;
+        this.radius = radius;
+    }
+
+    /**
+     * getter function for axisRay
+     *
+     * @return axisRay
+     */
+    public Ray getAxisRay() {
+        return axisRay;
+    }
+
+    /**
+     * function that returns radius value
+     *
+     * @return radius value
+     */
+    public double getRadius() {
+        return radius;
     }
 
     @Override
-    public Vector getNormal(Point point) {
-        //TODO: check if the get point is on the tube or in else space
-        double t = axisRay.getDir().dotProduct(point.subtract(axisRay.getP0()));
-        Point o;
-        if(t!=0){
-            o = axisRay.getP0().add(axisRay.getDir().scale(t));
-        }
-        else{
-            o = axisRay.getP0();
-        }
-
-        Vector normal = point.subtract(o);
-
-        if(normal.lengthSquared() != (radius * radius ))
-            return null;
-
-        return point.subtract(o).normalize();
+    public Vector getNormal(Point p) {
+        double t = p.subtract(axisRay.getP0()).dotProduct(axisRay.getDir());
+        Point o = axisRay.getPoint(t);
+        return p.subtract(o).normalize();
     }
 
     @Override
     public List<Point> findIntersections(Ray ray) {
+        return null;
+    }
+
+    @Override
+    protected List<GeoPoint> findGeoIntersectionsHelper(Ray ray) {
         return null;
     }
 }
