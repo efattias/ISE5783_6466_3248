@@ -1,13 +1,11 @@
 package primitives;
+
 import geometries.Intersectable.GeoPoint;
-
 import java.util.List;
-import java.util.Objects;
-
 import static primitives.Util.isZero;
 
 /**
- * This class will represent a ray using a point and a vector
+ * The class Ray Is sets type of objects that contain a vector (direction) and also a point.
  */
 public class Ray {
 
@@ -15,32 +13,46 @@ public class Ray {
     final private Vector dir;
 
     /**
-     * Constructor that receives point and vector
-     *
-     * @param p0  point
-     * @param dir Vector direction
+     * constructor to initialize a ray. ray contains 2 fields. the constructor get 2 parameters of  the types
+     * of the field - vector and point and put them in the fields "dir" and "p0"
+     * @param point
+     * @param vector
      */
-    public Ray(Point p0, Vector dir) {
-        this.p0 = p0;
-        this.dir = dir.normalize();
+    public Ray(Point point, Vector vector) {
+        this.p0 = point;
+        this.dir = vector.normalize();
     }
 
     /**
-     * Getter for ray point
-     *
-     * @return ray point
+     * A getter method
+     * @return the point of the ray
      */
     public Point getP0() {
         return p0;
     }
 
     /**
-     * Getter for ray direction
-     *
-     * @return ray direction
+     * A getter method
+     * @return the direction of the ray (a vector value)
      */
     public Vector getDir() {
         return dir;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        return (o instanceof Ray other)
+                && this.p0.equals(other.p0)
+                && this.dir.equals(other.dir);
+    }
+
+    @Override
+    public String toString() {
+        return "Ray{" +
+                "p0=" + p0 +
+                ", dir=" + dir +
+                '}';
     }
 
     /**
@@ -91,23 +103,6 @@ public class Ray {
             }
         }
         return closest;
-    }
-
-
-    @Override
-    public boolean equals(Object _object) {
-        if (this == _object) return true;
-        if (_object == null || getClass() != _object.getClass()) return false;
-        Ray ray = (Ray) _object;
-        return p0.equals(ray.p0) && dir.equals(ray.dir);
-    }
-
-    @Override
-    public String toString() {
-        return "Ray{" +
-                "p0=" + p0 +
-                ", dir=" + dir +
-                '}';
     }
 }
 

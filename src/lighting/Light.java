@@ -9,8 +9,7 @@ abstract class Light {
     private Color intensity;
 
     /**
-     * Constructor that sets the light's intensity.
-     *
+     * Constructor
      * @param intensity the light's intensity.
      */
     protected Light(Color intensity) {
@@ -18,8 +17,7 @@ abstract class Light {
     }
 
     /**
-     * Getter for the light's intensity.
-     *
+     * Getter for intensity.
      * @return the light's intensity.
      */
     public Color getIntensity() {

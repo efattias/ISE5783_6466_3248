@@ -14,8 +14,7 @@ public class SpotLight extends PointLight {
     private double narrowBeam = 1;
 
     /**
-     * Constructor that sets the light's intensity.
-     *
+     * Constructor
      * @param intensity the light's intensity.
      */
     public SpotLight(Color intensity, Point position, Vector direction) {
@@ -25,9 +24,6 @@ public class SpotLight extends PointLight {
 
     /**
      * setter for narrowBeam
-     *
-     * @param _narrowBeam the new value for narrowBeam
-     * @return this light
      */
     public SpotLight setNarrowBeam(double _narrowBeam) {
         this.narrowBeam = _narrowBeam;
@@ -36,10 +32,8 @@ public class SpotLight extends PointLight {
 
     @Override
     public Color getIntensity(Point point) {
-        //check if it is flashlight
-        if (narrowBeam != 1) {
+        if (narrowBeam != 1)  //check if it is flashlight
             return super.getIntensity(point).scale(Math.pow(Math.max(0, direction.dotProduct(getL(point))), narrowBeam));
-        }
         return super.getIntensity(point).scale(Math.max(0, direction.dotProduct(getL(point))));
     }
 }

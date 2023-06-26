@@ -10,8 +10,6 @@ public class Material {
 
     /**
      * setter for kD
-     * @param kD new Double3 kD for the material
-     * @return this material
      */
     public Material setKd(Double3 kD) {
         this.kD = kD;
@@ -20,8 +18,6 @@ public class Material {
 
     /**
      * setter for kD
-     * @param kD new double kD for the material
-     * @return this material
      */
     public Material setKd(double kD) {
         this.kD = new Double3(kD);
@@ -30,8 +26,6 @@ public class Material {
 
     /**
      * setter for kS
-     * @param kS new Double3 kS for the material
-     * @return this material
      */
     public Material setKs(Double3 kS) {
         this.kS = kS;
@@ -40,8 +34,6 @@ public class Material {
 
     /**
      * setter for kS
-     * @param kS new double kS for the material
-     * @return this material
      */
     public Material setKs(double kS) {
         this.kS = new Double3(kS);
@@ -50,8 +42,6 @@ public class Material {
 
     /**
      * setter for nShininess
-     * @param nShininess new nShininess for the material
-     * @return this material
      */
     public Material setShininess(int nShininess) {
         this.nShininess = nShininess;

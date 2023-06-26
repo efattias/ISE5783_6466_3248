@@ -1,27 +1,24 @@
 package geometries;
 
-import primitives.Point;
-import primitives.Ray;
-import primitives.Vector;
-
+import primitives.*;
 import java.util.List;
 
 /**
- * Class will be used to represent a Cylinder
+ * cylinder class represents three-dimensional cylinder
  */
 public class Cylinder extends Tube{
 
     final private double height;
 
     /**
-     * Constructor for Cylinder
-     * @param axisRay central ray of Cylinder
-     * @param radius radius value
-     * @param height height value
+     * cylinder constructor use radius, ray and height.
+     * @param ray The direction ray of the cylinder.
+     * @param r the cylinder radius.
+     * @param h the height of the cylinder.
      */
-    public Cylinder(Ray axisRay, double radius, double height) {
-        super(axisRay, radius);
-        this.height = height;
+    public Cylinder(Ray ray, double r, double h) {
+        super(ray, r);
+        height = h;
     }
 
     /**
@@ -31,7 +28,18 @@ public class Cylinder extends Tube{
      */
     @Override
     public Vector getNormal(Point p){
-        return null;
+        Point axisRayP0 = axisRay.getP0();
+        if (p.distance(axisRayP0) <= radius)    // on the base circle of the cylinder.
+            return axisRay.getDir().scale(-1);
+
+        Vector heightVector = axisRay.getDir().scale(height);
+        axisRayP0 = axisRayP0.add(heightVector);
+
+        if (p.distance(axisRayP0) <= radius)    // on the second base circle of the cylinder.
+            return axisRay.getDir();
+
+        // the regular case we calculate like the normal of the tube
+        return super.getNormal(p);
     }
 
     @Override

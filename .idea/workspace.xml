@@ -4,13 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4671c04d-5307-4a9a-99e0-5720f99fc5c8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/lighting/DirectionalLight.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/lighting/Light.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/lighting/LightSource.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/lighting/PointLight.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/lighting/SpotLight.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/primitives/Material.java" afterDir="false" />
+    <list default="true" id="4671c04d-5307-4a9a-99e0-5720f99fc5c8" name="Changes" comment="render test">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_27_04_2023_15_52__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_27_04_2023_15_52__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/geometries/Cylinder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Cylinder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/geometries/Geometries.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Geometries.java" afterDir="false" />
@@ -18,24 +13,23 @@
       <change beforePath="$PROJECT_DIR$/src/geometries/Intersectable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Intersectable.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/geometries/Plane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Plane.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/geometries/Polygon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Polygon.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/geometries/RadialGeometry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/RadialGeometry.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/geometries/Sphere.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Sphere.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/geometries/Triangle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Triangle.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/geometries/Tube.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Tube.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/lighting/AmbientLight.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lighting/AmbientLight.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lighting/DirectionalLight.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lighting/DirectionalLight.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lighting/Light.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lighting/Light.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lighting/LightSource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lighting/LightSource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lighting/PointLight.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lighting/PointLight.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lighting/SpotLight.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lighting/SpotLight.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/primitives/Color.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/primitives/Color.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/primitives/Double3.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/primitives/Double3.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/primitives/Material.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/primitives/Material.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/primitives/Ray.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/primitives/Ray.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/renderer/Camera.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/Camera.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/ImageWriter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/ImageWriter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/RayTracerBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/RayTracerBase.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/renderer/RayTracerBasic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/RayTracerBasic.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/scene/Scene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/scene/Scene.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unittests/geometries/CylinderTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/geometries/CylinderTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unittests/geometries/GeometriesTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/geometries/GeometriesTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unittests/geometries/SphereTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/geometries/SphereTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/unittests/geometries/TubeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/geometries/TubeTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unittests/renderer/IntegrationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/renderer/IntegrationTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unittests/renderer/RenderTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/renderer/RenderTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,22 +69,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/esthe/programing/ISE5783/unittests/renderer&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Downloaded.Files.Path.Enabled": "false",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "last_opened_file_path": "C:/Users/user/Downloads/ISE5783_6466_3248-PRO5",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="primitives" />
@@ -112,7 +106,7 @@
       <recent name="primitives" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.RenderTests (1)">
+  <component name="RunManager" selected="JUnit.All in ISE5783_6466_3248">
     <configuration name="All in ISE5783_6466_3248" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ISE5783_6466_3248" />
       <option name="PACKAGE_NAME" value="" />
@@ -185,8 +179,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.RenderTests (1)" />
         <item itemvalue="JUnit.All in ISE5783_6466_3248" />
+        <item itemvalue="JUnit.RenderTests (1)" />
         <item itemvalue="JUnit.GeometriesTest.findIntersections" />
         <item itemvalue="JUnit.RenderTests" />
         <item itemvalue="JUnit.RenderTests.basicRenderXml" />

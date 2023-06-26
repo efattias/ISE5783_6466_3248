@@ -1,24 +1,22 @@
 package geometries;
 
+import static primitives.Util.isZero;
+
 import java.util.List;
 
-import primitives.*;
-import static primitives.Util.*;
+import primitives.Point;
+import primitives.Ray;
+import primitives.Vector;
 
 /**
  * Polygon class represents two-dimensional polygon in 3D Cartesian coordinate
  * system
- *
  * @author Dan
  */
 public class Polygon extends Geometry {
-   /**
-    * List of polygon's vertices
-    */
+   /** List of polygon's vertices */
    protected final List<Point> vertices;
-   /**
-    * Associated plane in which the polygon lays
-    */
+   /** Associated plane in which the polygon lays */
    protected final Plane plane;
    private final int size;
 

@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package primitives;
 
@@ -44,8 +44,8 @@ public class Double3 {
       if (this == obj) return true;
       if (obj instanceof Double3 other)
          return isZero(d1 - other.d1)
-               && isZero(d2 - other.d2)
-               && isZero(d3 - other.d3);
+                 && isZero(d2 - other.d2)
+                 && isZero(d3 - other.d3);
       return false;
    }
 

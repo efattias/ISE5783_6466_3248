@@ -11,8 +11,7 @@ public class PointLight extends Light implements LightSource {
     private double kC = 1, kL = 0, kQ = 0;
 
     /**
-     * Constructor that sets the light's intensity.
-     *
+     * Constructor
      * @param intensity the light's intensity.
      */
     public PointLight(Color intensity, Point position) {
@@ -22,9 +21,6 @@ public class PointLight extends Light implements LightSource {
 
     /**
      * setter for kC
-     *
-     * @param _kC - new value for kC
-     * @return this PointLight for builder pattern
      */
     public PointLight setKc(double _kC) {
         kC = _kC;
@@ -33,9 +29,6 @@ public class PointLight extends Light implements LightSource {
 
     /**
      * setter for kL
-     *
-     * @param _kL - new value for kL
-     * @return this PointLight for builder pattern
      */
     public PointLight setKl(double _kL) {
         kL = _kL;
@@ -44,15 +37,11 @@ public class PointLight extends Light implements LightSource {
 
     /**
      * setter for kQ
-     *
-     * @param _kQ - new value for kQ
-     * @return this PointLight for builder pattern
      */
     public PointLight setKq(double _kQ) {
         kQ = _kQ;
         return this;
     }
-
 
     @Override
     public Color getIntensity(Point point) {

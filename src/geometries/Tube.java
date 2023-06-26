@@ -1,43 +1,38 @@
 package geometries;
 
 import primitives.*;
-
 import java.util.List;
 
-import static primitives.Util.*;
-
 /**
- * Class will be used to represent a Tube
+ * tube class represents three-dimensional tube
  */
 public class Tube extends Geometry {
 
+    /**
+     * the direction ray of the tube
+     */
     final protected Ray axisRay;
     final protected double radius;
 
     /**
-     * Constructor for Tube class with a ray and a radius
-     *
-     * @param axisRay ray value
-     * @param radius  radius value
+     * Tube constructor use radius and ray.
+     * @param ray the ray to calculate the tube.
+     * @param r   the radius to calculate the tube.
      */
-    public Tube(Ray axisRay, double radius) {
-        this.axisRay = axisRay;
-        this.radius = radius;
+    public Tube(Ray ray, double r) {
+        this.axisRay = ray;
+        this.radius = r;
     }
 
     /**
-     * getter function for axisRay
-     *
-     * @return axisRay
+     * getter for axisRay
      */
     public Ray getAxisRay() {
         return axisRay;
     }
 
     /**
-     * function that returns radius value
-     *
-     * @return radius value
+     * getter for radius
      */
     public double getRadius() {
         return radius;

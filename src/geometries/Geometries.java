@@ -2,36 +2,33 @@ package geometries;
 
 import primitives.Point;
 import primitives.Ray;
-
 import java.util.LinkedList;
 import java.util.List;
 
 /**
- * Class represents a list of geometries in the scene
+ * Class provides a list of geometries in the scene
  */
 public class Geometries extends Intersectable {
     private final List<Intersectable> geometries = new LinkedList<>();
 
-    //use LinkedList instead of ArrayList for better performance in the future (if needed) - O(1) instead of O(n) for add and remove operations
     public Geometries() {
     }
 
     /**
-     * constructor for the class
-     * @param geometries list of geometries to add
+     * constructor
+     * @param geometries list of geometries for add
      */
     public Geometries(Intersectable... geometries) {
         add(geometries);
     }
 
     /**
-     * add geometries to the list
+     * add the geometries to list
      * @param geometries list of geometries to add
      */
     public void add(Intersectable... geometries) {
         this.geometries.addAll(List.of(geometries));
     }
-
 
     @Override
     protected List<GeoPoint> findGeoIntersectionsHelper(Ray ray) {
@@ -45,8 +42,6 @@ public class Geometries extends Intersectable {
             }
         }
         return intersections;
-
-
     }
 
 }

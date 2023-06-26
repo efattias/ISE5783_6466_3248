@@ -1,16 +1,10 @@
 package renderer;
 
 import lighting.LightSource;
-import lighting.SpotLight;
 import primitives.*;
 import scene.Scene;
 import geometries.Intersectable.GeoPoint;
-
-import java.io.*;
-
-
 import java.util.List;
-
 import static primitives.Util.alignZero;
 
 /**
@@ -19,8 +13,7 @@ import static primitives.Util.alignZero;
 public class RayTracerBasic extends RayTracerBase {
 
     /**
-     * constructor that calls super constructor
-     *
+     * constructor
      * @param scene the scene to trace through
      */
     public RayTracerBasic(Scene scene) {
@@ -45,12 +38,16 @@ public class RayTracerBasic extends RayTracerBase {
         Vector vector = ray.getDir();
         Vector normal = gp.geometry.getNormal(gp.point);
         double nv = alignZero(normal.dotProduct(vector));
+
         if (nv == 0)
             return color;
+
         Material material = gp.geometry.getMaterial();
+
         for (LightSource lightSource : scene.lights) {
             Vector lightVector = lightSource.getL(gp.point);
             double nl = alignZero(normal.dotProduct(lightVector));
+
             if (nl * nv > 0) {
                 Color lightIntensity = lightSource.getIntensity(gp.point);
                 color = color.add(lightIntensity.scale(calcDiffusive(material, nl)), lightIntensity.scale(calcSpecular(material, normal, lightVector, nl, vector)));
@@ -72,7 +69,6 @@ public class RayTracerBasic extends RayTracerBase {
         Vector reflectedVector = lightVector.subtract(normal.scale(2 * nl));
         double max = Math.max(0, vector.scale(-1).dotProduct(reflectedVector));
         return material.kS.scale(Math.pow(max, material.nShininess));
-
     }
 
     /**
@@ -87,7 +83,6 @@ public class RayTracerBasic extends RayTracerBase {
 
     /**
      * function calculates color of point
-     *
      * @param geoPoint point to color
      * @return color
      */

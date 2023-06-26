@@ -6,6 +6,7 @@ import primitives.*;
  * class AmbientLight
  */
 public class AmbientLight extends Light {
+
     /**
      * constructor that receives a color and sets the intensity based in kA
      */
@@ -14,7 +15,7 @@ public class AmbientLight extends Light {
     }
 
     /**
-     * default constructor that sets the intensity to black
+     * default constructor
      */
     public AmbientLight() {
         super(Color.BLACK);
