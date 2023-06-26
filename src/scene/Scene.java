@@ -8,13 +8,14 @@ import java.awt.*;
 
 public class Scene {
     String sceneName;
-    AmbientLight ambientLight;
+    public AmbientLight ambientLight;
     public Geometries geometries;
 
-    Color background;
+    public Color background;
 
     public Scene(String name) {
         sceneName = name;
+        geometries = new Geometries();
     }
 
     public Scene setAmbientLight(AmbientLight myAmbientLight) {
