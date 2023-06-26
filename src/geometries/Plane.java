@@ -13,7 +13,7 @@ import static primitives.Util.isZero;
 /**
  * plane class represents three-dimensional plane.
  */
-public class Plane implements Geometry {
+public class Plane extends Geometry {
     /**
      * by q0 we calculate the plane
      */
