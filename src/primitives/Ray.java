@@ -8,7 +8,7 @@ import static primitives.Util.isZero;
  * The class Ray Is sets type of objects that contain a vector (direction) and also a point.
  */
 public class Ray {
-
+    private static final double DELTA = 0.1;
     final private Point p0;
     final private Vector dir;
 
@@ -21,6 +21,18 @@ public class Ray {
     public Ray(Point point, Vector vector) {
         this.p0 = point;
         this.dir = vector.normalize();
+    }
+
+    /**
+     * Constructor that moves the ray by DELTA
+     * @param p0 point
+     * @param direction direction (must be normalized)
+     * @param normal normal
+     */
+    public Ray(Point p0, Vector direction, Vector normal) {
+        Vector delta = normal.scale(normal.dotProduct(direction) > 0 ? DELTA : - DELTA);
+        this.p0 = p0.add(delta);
+        this.dir = direction;
     }
 
     /**
