@@ -5,7 +5,9 @@ import primitives.Point;
 import primitives.Ray;
 import primitives.Vector;
 
+import java.util.List;
 import java.util.MissingResourceException;
+import java.util.stream.IntStream;
 
 /**
  * camera class
@@ -147,7 +149,7 @@ public class Camera {
         double yI = -(i - (nY - 1d) / 2) * rY;
         double jX = (j - (nX - 1d) / 2) * rX;
         Point Pij = pC;
-
+        //TODO: use is zero
         if (yI != 0) Pij = Pij.add(vUp.scale(yI));
         if (jX != 0) Pij = Pij.add(vRight.scale(jX));
 
@@ -162,12 +164,20 @@ public class Camera {
             throw new MissingResourceException("", "", "Camera is not initialized");
         int nX = imageWriter.getNx();
         int nY = imageWriter.getNy();
-        for (int i = 0; i < imageWriter.getNx(); i++) {
-            for (int j = 0; j < imageWriter.getNy(); j++) {
-                Ray ray = constructRay(nX, nY, j, i);
-                imageWriter.writePixel(j, i, this.castRay(nX, nY, i, j));
-            }
-        }
+
+        IntStream.range(0, nY).parallel()
+                .forEach(i -> IntStream.range(0, nX).parallel() // for each row:
+                        .forEach(j -> {
+                            Color color = castRay(nX, nY, i, j);
+                            imageWriter.writePixel(j, i, color);
+                        }));
+//
+//        for (int i = 0; i < imageWriter.getNx(); i++) {
+//            for (int j = 0; j < imageWriter.getNy(); j++) {
+//                Color color = castRay(nX, nY, i, j);
+//                imageWriter.writePixel(j, i, color);
+//            }
+//        }
         return this;
     }
 
@@ -209,5 +219,19 @@ public class Camera {
     private Color castRay(int nX, int nY, int i, int j) {
         Ray tempRay = constructRay(nX, nY, j, i);
         return rayTracer.traceRay(tempRay);
+    }
+
+    private Color castRays(int nX, int nY, int i, int j) {
+        Color color = Color.BLACK;
+        List<Ray> rays = constructRays(nX, nY, j, i);
+        for (Ray ray:rays) {
+            color.add(rayTracer.traceRay(ray));
+        }
+        return color.reduce(rays.size());
+    }
+
+    //TODO: to do
+    private List<Ray> constructRays(int nX, int nY, int j, int i) {
+        return null;
     }
 }
