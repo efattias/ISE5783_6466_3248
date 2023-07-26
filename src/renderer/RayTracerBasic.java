@@ -18,6 +18,8 @@ public class RayTracerBasic extends RayTracerBase {
     private static final int MAX_CALC_COLOR_LEVEL = 10;
     private static final double MIN_CALC_COLOR_K = 0.001;
     private static final Double3 INIT_CALC_COLOR_K = Double3.ONE;
+    private static final double DELTA = 0.1;
+
 
     /**
      * constructor that calls super constructor
@@ -41,7 +43,7 @@ public class RayTracerBasic extends RayTracerBase {
      * @param ray      ray that intersects
      * @return color
      */
-    private Color calcLocalEffects(GeoPoint geoPoint, Ray ray) {
+    private Color calcLocalEffects(GeoPoint geoPoint, Ray ray, Double3 k) {
         Color color = geoPoint.geometry.getEmission();
         Vector vector = ray.getDir();
         Vector normal = geoPoint.geometry.getNormal(geoPoint.point);
@@ -53,8 +55,9 @@ public class RayTracerBasic extends RayTracerBase {
             Vector lightVector = lightSource.getL(geoPoint.point);
             double nl = alignZero(normal.dotProduct(lightVector));
             if (nl * nv > 0) {
-                if (unshaded(geoPoint, lightVector, normal, lightSource)) {
-                    Color lightIntensity = lightSource.getIntensity(geoPoint.point);
+                Double3 ktr = transparency(geoPoint, lightSource, lightVector, normal);
+                if (new Double3(MIN_CALC_COLOR_K).lowerThan(ktr.product(k))) {
+                    Color lightIntensity = lightSource.getIntensity(geoPoint.point).scale(ktr);
                     color = color.add(lightIntensity.scale(calcDiffusive(material, nl)), lightIntensity.scale(calcSpecular(material, normal, lightVector, nl, vector)));
                 }
             }
@@ -80,6 +83,7 @@ public class RayTracerBasic extends RayTracerBase {
 
     /**
      * TODO
+     *
      * @param geoPoint
      * @param level
      * @param color
@@ -119,7 +123,7 @@ public class RayTracerBasic extends RayTracerBase {
      * function calculates diffusive color
      *
      * @param material material of geometry
-     * @param nl dot product of normal and light vector
+     * @param nl       dot product of normal and light vector
      * @return diffusive color
      */
     private Double3 calcDiffusive(Material material, double nl) {
@@ -133,7 +137,7 @@ public class RayTracerBasic extends RayTracerBase {
      * @return color
      */
     private Color calcColor(GeoPoint geoPoint, Ray ray, int level, Double3 k) {
-        Color color = calcLocalEffects(geoPoint, ray);
+        Color color = calcLocalEffects(geoPoint, ray, k);
         return 1 == level ? color : color.add(calcGlobalEffects(geoPoint, ray, level, k));
     }
 
@@ -146,7 +150,9 @@ public class RayTracerBasic extends RayTracerBase {
      * @return true if unshaded
      */
     private boolean unshaded(GeoPoint geoPoint, Vector l, Vector n, LightSource lightSource) {
-        Ray lightRay = new Ray(geoPoint.point, l.scale(-1), n);
+        Vector delta = n.scale(n.dotProduct(l) > 0 ? DELTA : -DELTA);
+        Point point = geoPoint.point.add(delta);
+        Ray lightRay = new Ray(point, l.scale(-1), n);
         List<GeoPoint> intersections = scene.geometries.findGeoIntersections(lightRay);
 
         if (intersections != null) {
@@ -158,6 +164,32 @@ public class RayTracerBasic extends RayTracerBase {
         }
         return true;
     }
+
+    private Double3 transparency(GeoPoint gp, LightSource light, Vector l, Vector n) {
+        // refactored old code
+        Ray lightRay = new Ray(gp.point, l.scale(-1), n);
+        List<GeoPoint> intersections = scene.geometries.findGeoIntersections(lightRay);
+
+
+        if (intersections == null)
+            return Double3.ONE;
+
+        Double3 ktr = Double3.ONE;
+        double distance = light.getDistance(gp.point);
+        for (GeoPoint p : intersections) {
+            if (p.point.distance(gp.point) < distance)
+                if (alignZero(p.point.distance(gp.point) - distance) <= 0)
+                    ktr = p.geometry.getMaterial().kT.product(ktr);
+            if (ktr.lowerThan(MIN_CALC_COLOR_K))
+                return Double3.ZERO;
+        }
+
+        return ktr;
+
+    }
+
+
+
 
     /**
      * function will construct a reflection ray
