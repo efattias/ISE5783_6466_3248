@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4671c04d-5307-4a9a-99e0-5720f99fc5c8" name="Changes" comment="do 7 level 2">
+    <list default="true" id="4671c04d-5307-4a9a-99e0-5720f99fc5c8" name="Changes" comment="do 7 level 2 reflection">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -352,7 +352,14 @@
       <option name="project" value="LOCAL‎" />
       <updated>1690367005921</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL‎-00027" summary="do 7 level 2 reflection">
+      <created>1690368043143</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL‎-00027" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1690368043143</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -383,7 +390,8 @@
     <MESSAGE value="do 7 level 1&#10;start 2" />
     <MESSAGE value="do 7 level 1 with tests" />
     <MESSAGE value="do 7 level 2" />
-    <option name="LAST_COMMIT_MESSAGE" value="do 7 level 2" />
+    <MESSAGE value="do 7 level 2 reflection" />
+    <option name="LAST_COMMIT_MESSAGE" value="do 7 level 2 reflection" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
