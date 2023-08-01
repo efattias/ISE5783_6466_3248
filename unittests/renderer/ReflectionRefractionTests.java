@@ -104,4 +104,35 @@ public class ReflectionRefractionTests {
          .renderImage() //
          .writeToImage();
    }
+
+   /** Produce a picture of a two sphere lighted by a spot light
+    * their shades one hard and the second is soft shadow
+    * transparent Sphere producing partial shadow */
+   @Test
+   public void ourPicture() {
+      Camera camera = new Camera(new Point(0, 0, 1000), new Vector(0, 0, -1), new Vector(0, 1, 0)) //
+              .setVPSize(200, 200).setVPDistance(1000);
+
+      scene.setAmbientLight(new AmbientLight(new Color(WHITE), 0.15));
+
+      scene.geometries.add( //
+              new Triangle(new Point(-150, -150, -115), new Point(150, -150, -135),
+                      new Point(75, 75, -150)) //
+                      .setMaterial(new Material().setKr(1)), //
+              new Triangle(new Point(-150, -150, -115), new Point(-70, 70, -140), new Point(75, 75, -150)) //
+                      .setMaterial(new Material().setKd(0.5).setKs(0.5).setShininess(60)), //
+              new Sphere(new Point(0, 0, -50), 50d).setEmission(new Color(BLUE)) //
+                      .setMaterial(new Material().setKd(0.4).setKs(0.3).setShininess(100).setKt(0.3)),
+              new Sphere(new Point(60, 50, -50), 30d).setEmission(new Color(BLUE)) //
+                      .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(30).setKt(0.6)));
+
+      scene.lights.add(new SpotLight(new Color(700, 400, 400), new Point(60, 50, 0), new Vector(0, 0, -1)) //
+              .setKl(4E-5).setKq(2E-7));
+
+      ImageWriter imageWriter = new ImageWriter("our", 600, 600);
+      camera.setImageWriter(imageWriter) //
+              .setRayTracer(new RayTracerBasic(scene)) //
+              .renderImage() //
+              .writeToImage();
+   }
 }
